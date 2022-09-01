@@ -5,18 +5,6 @@ const SearchHeaderOption = ({ title, Icon, selected }) => {
   const router = useRouter();
 
   const selectTab = (title) => {
-    // let searchType = "";
-    // if (title === "Images") {
-    //   searchType = "image";
-    // }
-    // if (router.query.term !== searchType)
-    //   useEffect(
-    //     router.push(
-    //       `/search?term=${router.query.term}&searchType=
-    //     ${searchType}
-    //     `
-    //     )
-    //   );
     console.log("title", title);
     router.push(
       `/search?term=${router.query.term}&searchType=${
