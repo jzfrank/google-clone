@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { SearchIcon, MicrophoneIcon, XIcon } from "@heroicons/react/solid";
 import User from "./User";
+import SearchHeaderOptions from "./SearchHeaderOptions";
 
 const SearchHeader = () => {
   const router = useRouter();
@@ -14,7 +15,7 @@ const SearchHeader = () => {
     const term = searchInputRef.current.value.trim();
     searchInputRef.current.value = term;
     if (!term) return;
-    router.push(`/search?term=${term}`);
+    router.push(`/search?term=${term}&searchType=`);
   };
 
   return (
@@ -37,7 +38,7 @@ const SearchHeader = () => {
         >
           <input
             type="text"
-            defaultValue={router.query.term.trim()}
+            defaultValue={router.query.term}
             ref={searchInputRef}
             className="w-full focus:outline-none"
           />
@@ -52,6 +53,7 @@ const SearchHeader = () => {
 
         <User className="ml-auto whitespace-nowrap" />
       </div>
+      <SearchHeaderOptions />
     </header>
   );
 };
