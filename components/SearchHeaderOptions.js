@@ -9,7 +9,8 @@ const SearchHeaderOptions = () => {
   return (
     <div
       className="flex space-x-8 select-none 
-    w-full justify-center text-sm text-gray-700 lg:pl-52 lg:justify-start"
+        w-full justify-center text-sm text-gray-700 lg:pl-52 
+        lg:justify-start border-b"
     >
       <SearchHeaderOption
         title="All"
