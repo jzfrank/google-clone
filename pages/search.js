@@ -1,9 +1,11 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
+import ImageResults from "../components/ImageResults";
 import SearchHeader from "../components/SearchHeader";
 import SearchResults from "../components/SearchResults";
 import Response from "../Response";
+import ResponseImages from "../ResponseImages";
 
 const search = ({ results }) => {
   console.log(results);
@@ -18,8 +20,12 @@ const search = ({ results }) => {
       {/* search header */}
       <SearchHeader />
 
-      {/* search results */}
-      <SearchResults results={results} />
+      {/* search web and Images results */}
+      {router.query.searchType === "image" ? (
+        <ImageResults results={results} />
+      ) : (
+        <SearchResults results={results} />
+      )}
     </div>
   );
 };
@@ -28,9 +34,11 @@ export async function getServerSideProps(context) {
   // have a mock data while styling, otherwise you
   // will easily use up the quota of API
   const startIndex = context.query.start || "1";
-  const mockData = false;
+  const mockData = true;
   const data = mockData
-    ? Response
+    ? context.query.searchType === "image"
+      ? ResponseImages
+      : Response
     : await fetch(`https://www.googleapis.com/customsearch/v1?key=${
         process.env.API_KEY
       }&cx=${process.env.CONTEXT_KEY}&q=${context.query.term}
