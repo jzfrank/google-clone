@@ -8,13 +8,13 @@ import Response from "../Response";
 import ResponseImages from "../ResponseImages";
 
 const search = ({ results }) => {
-  console.log(results);
+  // console.log(results);
   const router = useRouter();
 
   return (
     <div>
       <Head>
-        <title>{router.query.term} - Search Page</title>
+        <title>{router.query.term + " - Search Page"}</title>
       </Head>
 
       {/* search header */}
@@ -34,7 +34,7 @@ export async function getServerSideProps(context) {
   // have a mock data while styling, otherwise you
   // will easily use up the quota of API
   const startIndex = context.query.start || "1";
-  const mockData = true;
+  const mockData = false;
   const data = mockData
     ? context.query.searchType === "image"
       ? ResponseImages
