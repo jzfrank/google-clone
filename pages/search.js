@@ -12,7 +12,7 @@ const search = ({ results }) => {
   return (
     <div>
       <Head>
-        <title>{router.query.term}</title>
+        <title>{router.query.term} - Search Page</title>
       </Head>
 
       {/* search header */}
